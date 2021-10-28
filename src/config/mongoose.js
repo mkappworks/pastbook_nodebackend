@@ -2,15 +2,13 @@ const mongoose = require("mongoose");
 require("dotenv/config");
 
 //mongo client to connect the the mongodb hosted in mongodb cloud
-mongoose.connect(
- `mongodb+srv://${process.env.DB_CONNECTION_USER_ID}:${process.env.DB_CONNECTION_PASSWORD}@testcluster.fow0y.mongodb.net/pastbookDB?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-  )
+mongoose
+  .connect(`${process.env.MONGO_URL}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  })
   .then((db) => {
     console.log("Connected to MonogoDB");
   })
